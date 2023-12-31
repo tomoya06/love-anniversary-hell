@@ -7,8 +7,8 @@ export const ann_basic: AnnCalculator = (date, startDate) => {
   if (isYear) {
     return {
       ret: true,
-      trueResp: [`${diffYear}周年快乐!`, 2],
-      falseResp: ["", -1],
+      true: [`${diffYear}周年快乐!`, 2],
+      false: ["", -1],
     };
   }
 
@@ -16,8 +16,8 @@ export const ann_basic: AnnCalculator = (date, startDate) => {
   if ([1, 2, 3, 5, 10, 15, 20, 30, 50, 100, 200].includes(monthDiff)) {
     return {
       ret: true,
-      trueResp: [`我们在一起${monthDiff}个月啦！`, 0.5],
-      falseResp: ["", -0.3],
+      true: [`我们在一起${monthDiff}个月啦！`, 0.5],
+      false: ["不舒服，先睡啦", -0.3],
     };
   }
 
@@ -29,7 +29,8 @@ export const ann_week_easy: AnnCalculator = (date, startDate) => {
   if ([1, 2, 3, 5, 6, 8, 10, 20, 30, 50, 100, 200].includes(weekDiff)) {
     return {
       ret: true,
-      trueResp: [`我们在一起${weekDiff}个星期啦`, 0.03],
+      true: [`我们在一起${weekDiff}个星期啦`, 0.03],
+      false: ["身体不舒服，先睡啦", -0.03],
     };
   }
 
@@ -44,8 +45,8 @@ export const ann_festivals: AnnCalculator = (date) => {
 
   return {
     ret: true,
-    trueResp: [`今天是${fest}`, 1],
-    falseResp: [`你忘了今天是${fest}吗？`, -1],
+    true: [`今天是${fest}`, 1],
+    false: [`你忘了今天是${fest}吗？`, -1],
   };
 };
 
@@ -54,8 +55,8 @@ export const ann_chanhuiMonth: AnnCalculator = (date) => {
   if (fakeValuntines[formatDate]) {
     return {
       ret: true,
-      trueResp: [`今天是${fakeValuntines[formatDate]}`, 1],
-      falseResp: [`你不知道今天是${fakeValuntines[formatDate]}吗？`, 1],
+      true: [`今天是${fakeValuntines[formatDate]}`, 1],
+      false: [`你不知道今天是${fakeValuntines[formatDate]}吗？`, 1],
     };
   }
 };

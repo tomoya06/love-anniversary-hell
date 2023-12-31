@@ -1,10 +1,11 @@
 import dayjs from "dayjs";
 import { useGame } from "./control";
 import { Fragment, useMemo } from "react";
+import { random } from "lodash";
 
 export default function ChatPage() {
-  const { life, chatDate, chats, sysMsgs } = useGame(
-    dayjs("2020-12-08").add(Math.random() * 1000, "days")
+  const { life, chatDate, chats, sysMsgs, userInput, handleInput } = useGame(
+    dayjs("2020-12-08").add(random(0, 1000), "days")
   );
 
   const blurChat = useMemo(() => {
@@ -84,7 +85,26 @@ export default function ChatPage() {
               );
             })}
           </div>
-          <div id="chatcontrol" className="h-14 bg-white"></div>
+          <div
+            id="chatcontrol"
+            className="h-14 bg-white flex align-center justify-center py-2"
+          >
+            {userInput.length > 0 ? (
+              <Fragment>
+                {userInput.map((input) => (
+                  <button
+                    key={`userInput_${input.shortcut}`}
+                    className="rounded-md px-4 py-2 shadow mx-2"
+                    onClick={() => handleInput(input)}
+                  >
+                    {input.shortcut}
+                  </button>
+                ))}
+              </Fragment>
+            ) : (
+              <Fragment></Fragment>
+            )}
+          </div>
         </div>
       </div>
     </Fragment>
