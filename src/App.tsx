@@ -13,7 +13,7 @@ function App() {
         setGameStatus,
       }}
     >
-      <div className="w-full h-full">
+      <div className="w-screen h-screen">
         {gameStatus === GameStatus.home && <HomePage />}
         {gameStatus === GameStatus.gaming && <ChatPage />}
       </div>
