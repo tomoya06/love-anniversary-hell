@@ -6,8 +6,14 @@ export enum GameStatus {
   finish,
 }
 
+export enum AnnInputType {
+  false = 0,
+  true = 1,
+  bonus = 2,
+}
+
 export type AnnInput = {
-  ret: boolean;
+  ret: AnnInputType;
   shortcut: string;
   msg: string;
 };
