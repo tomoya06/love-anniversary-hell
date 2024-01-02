@@ -3,7 +3,7 @@ import { AnnCalculator } from "./types";
 
 export const ann_basic: AnnCalculator = (date, startDate) => {
   const diffYear = date.diff(startDate, "year", true);
-  const isYear = Number.isInteger(diffYear);
+  const isYear = Number.isInteger(diffYear) && diffYear > 0;
   if (isYear) {
     return {
       ret: true,

@@ -5,27 +5,15 @@ import { random } from "lodash";
 import { MAX_LIFE, MAX_MONEY } from "../../utils/constants";
 
 export default function ChatPage() {
-  const { life, money, chatDate, chats, sysMsgs, userInput, handleInput } =
+  const { life, money, chatDate, chats, userInput, handleInput, blur } =
     useGame(dayjs("2020-12-08").add(random(0, 1000), "days"));
 
   const blurChat = useMemo(() => {
-    return life <= 0 || sysMsgs.length > 0 ? "blur-sm" : "blur-none";
-  }, [sysMsgs, life]);
+    return life <= 0 || blur ? "blur-sm" : "blur-none";
+  }, [life, blur]);
 
   return (
     <Fragment>
-      {sysMsgs.length > 0 ? (
-        <div className="fixed left-4 right-4 top-24 z-10 flex flex-col items-end">
-          {sysMsgs.map((msg, index) => (
-            <div
-              className="py-2 px-4 rounded-md my-1 bg-white shadow text-sm text-right w-auto shadow"
-              key={JSON.stringify({ index, msg })}
-            >
-              {msg}
-            </div>
-          ))}
-        </div>
-      ) : null}
       <div className="w-full h-full flex justify-center">
         {/* FIXME: why query breakpoint not working */}
         <div
